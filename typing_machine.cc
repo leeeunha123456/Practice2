@@ -2,12 +2,9 @@
 
 #include "typing_machine.h"
 
-TypingMachine::TypingMachine() 
-{
-	headNode = new Node('H');
-	tailNode = headNode->InsertNextNode('T');
-	cursorNode = headNode;
-	stringCount = 0;
+TypingMachine::TypingMachine() : headNode(new Node('H')), cursorNode(headNode), stringCount(0) 
+{ 
+	tailNode = headNode->InsertNextNode('T'); 
 }
 
 void TypingMachine::HomeKey() 
@@ -39,10 +36,10 @@ void TypingMachine::RightKey()
 bool TypingMachine::TypeKey(char key) 
 {
 	// 알파벳 & 특수문자만 받기
-	if (key < 32 || key > 126) 
+	if (key < ASCII_RANGE_START || key > ASCII_RANGE_END)
 		return false;
 	// typing size
-	if (stringCount >= 100) 
+	if (stringCount >= MAX_LENGTH)
 		return false;
 
 	cursorNode = cursorNode->InsertNextNode(key);
@@ -79,12 +76,4 @@ std::string TypingMachine::Print(char separator)
 		currentNode = currentNode->GetNextNode();
 	}
 	return result;
-}
-
-Node* TypingMachine::getCursorNode() {
-	return cursorNode;
-}
-
-Node* TypingMachine::getHeadNode() {
-	return headNode;
 }

@@ -7,12 +7,18 @@
 
 #include "node.h"
 
+//class Node;
+
 class TypingMachine {
 private:
 	Node* headNode;
 	Node* tailNode;
 	Node* cursorNode;
 	int stringCount;
+
+	const int ASCII_RANGE_START = 32;
+	const int ASCII_RANGE_END = 126;
+	const int MAX_LENGTH = 100;
 
 public:
 	TypingMachine();
@@ -22,8 +28,6 @@ public:
 	void RightKey();
 	bool TypeKey(char key);
 	bool EraseKey();
-	Node* getCursorNode();
-	Node* getHeadNode();
 	std::string Print(char separator);
 };
 

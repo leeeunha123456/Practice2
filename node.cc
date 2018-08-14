@@ -2,11 +2,7 @@
 
 #include "node.h"
 
-Node::Node(char data) 
-{
-	this->data = data;
-	previousNode = nullptr;
-	nextNode = nullptr;
+Node::Node(char data) : nextNode(nullptr), previousNode(nullptr), data(data) {
 }
 
 char Node::GetData() 
@@ -15,17 +11,13 @@ char Node::GetData()
 }
 
 Node* Node::GetPreviousNode() 
-{
-	if (previousNode != nullptr) 
-		return previousNode;
-	return nullptr;
+{	
+	return previousNode;
 }
 
 Node* Node::GetNextNode() 
 {
-	if (nextNode != nullptr) 
-		return nextNode;
-	return nullptr;
+	return nextNode;
 }
 
 Node* Node::InsertPreviousNode(char data) 
